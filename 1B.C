@@ -83,6 +83,7 @@ void charc(void) {
         printf("%c", t[i]);
     }
 }
+//sample output
 /*  
 1.Character stuffing
 2.exit

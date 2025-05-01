@@ -59,6 +59,7 @@
   "files.associations": {
     "*.ejs": "html",
     "1a.C": "cpp",
-    "1b.C": "cpp"
+    "1b.C": "cpp",
+    "2C.C": "cpp"
   }
 }

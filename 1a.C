@@ -41,6 +41,7 @@ int main() {
 
     return 0;
 }
+//sample output
 /* 
 enter the bit string: 101011111000
 after stuffing : 01111110_1010111110000_01111110
