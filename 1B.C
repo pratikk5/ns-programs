@@ -1,93 +1,105 @@
 #include <stdio.h>
 #include <string.h>
 
-void charc(char d[], int sn);
+void charc(void);
 
-int main() {
+void main() {
     int choice;
 
     while (1) {
-        printf("\n\n\n1. Character Stuffing");
-        printf("\n2. Exit");
-        printf("\n\nEnter choice: ");
+        printf("\n\n\n 1. Character Stuffing");
+        printf("\n 2. Exit");
+        printf("\n\n Enter choice: ");
         scanf("%d", &choice);
         printf("You entered: %d\n", choice);
 
-        if (choice > 2) {
+        if (choice > 2)
             printf("\n\nInvalid option. Please re-enter.");
-        } else {
-            switch (choice) {
-                case 1: {
-                    char data[50]; // Assuming a maximum data length of 50
-                    int n, i;
 
-                    printf("\nEnter the number of characters: ");
-                    scanf("%d", &n);
-                    printf("Enter the characters: ");
-                    for (i = 0; i < n; i++) {
-                        scanf(" %c", &data[i]); // Note the space before %c
-                    }
-                    charc(data, n);
-                    break;
-                }
-                case 2:
-                    return 0;
-            }
+        switch (choice) {
+            case 1:
+                charc();
+                break;
+            case 2:
+                return;
         }
     }
-    return 0;
 }
 
-void charc(char d[], int sn) {
-    char c[150]; // Assuming a maximum stuffed data length
-    int i, j = 0;
-    char delimiter = 4; // ASCII for EOT
-    char escape = 2;    // ASCII for STX
-    char r[150];       // Array to store the unstuffed data
-    int k = 0;
+void charc(void) {
+    char c[50], d[100], t[50];
+    int i, m, j = 0, k = 6;
 
-    printf("\nOriginal data: ");
-    for (i = 0; i < sn; i++) {
+    printf("\n Enter the number of characters: ");
+    scanf("%d", &m);
+    getchar(); // To consume newline after number input
+
+    printf("\n Enter the Characters \n");
+    for (i = 0; i < m; i++)
+        scanf("%c", &c[i]);
+
+    printf("\n Original Data \n");
+    for (i = 0; i < m; i++)
+        printf("%c", c[i]);
+
+    d[0] = 'd';
+    d[1] = 'l';
+    d[2] = 'e';
+    d[3] = 's';
+    d[4] = 't';
+    d[5] = 'x';
+
+    for (i = 0; i < m; i++) {
+        if (c[i] == 'd' && c[i + 1] == 'l' && c[i + 2] == 'l') {
+            d[k++] = 'd';
+            d[k++] = 'l';
+            d[k++] = 'e';
+        }
+        d[k++] = c[i];
+    }
+
+    d[k++] = 'd';
+    d[k++] = 'l';
+    d[k++] = 'e';
+    d[k++] = 'e';
+    d[k++] = 't';
+    d[k++] = 'x';
+
+    printf("\n\n Transmitted Data \n");
+    for (i = 0; i < k; i++) {
         printf("%c", d[i]);
     }
-    printf("\n");
 
-    // Character Stuffing
-    for (i = 0; i < sn; i++) {
-        if (d[i] == delimiter) {
-            c[j++] = escape;
-            c[j++] = delimiter;
-            c[j++] = escape;
-        } else if (d[i] == escape) {
-	    c[j++] = escape;
-            c[j++] = escape;
-        } else {
-            c[j++] = d[i];
+    j = 0;
+    for (i = 6; i < k - 6; i++) {
+        if (d[i] == 'd' && d[i + 1] == 'l' && d[i + 2] == 'e') {
+            i += 3;
         }
+        t[j++] = d[i];
     }
-    c[j] = '\0';
 
-    printf("\nTransmitted data (stuffed): ");
-    printf("%s\n", c);
-
-    // Character Unstuffing
-    for (i = 0; c[i] != '\0'; i++) {
-        if (c[i] == escape) {
-            i++;
-            if (c[i] == delimiter && c[i + 1] == escape) {
-                r[k++] = delimiter;
-                i++;
-            } else if (c[i] == escape) {
-                r[k++] = escape;
-            } else {
-                r[k++] = c[i];
-            }
-        } else {
-            r[k++] = c[i];
-        }
+    printf("\n\n Received Data \n");
+    for (i = 0; i < j; i++) {
+        printf("%c", t[i]);
     }
-    r[k] = '\0';
-
-    printf("\nReceived data (unstuffed): ");
-    printf("%s\n", r);
 }
+/*  
+1.Character stuffing
+2.exit
+
+ enter choice 1
+
+ Enter the number of characters 6
+
+ Enter the Character 
+pratik
+
+ Original Data
+pratik
+ 
+ transmitted data
+dlestxpratikdleetx
+
+ Received Data
+pratik
+*/
