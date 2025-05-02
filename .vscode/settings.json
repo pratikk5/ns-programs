@@ -60,6 +60,7 @@
     "*.ejs": "html",
     "1a.C": "cpp",
     "1b.C": "cpp",
-    "2C.C": "cpp"
+    "2C.C": "cpp",
+    "4A.C": "cpp"
   }
 }
