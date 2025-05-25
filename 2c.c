@@ -1,3 +1,4 @@
+//lrc code
 #include <stdio.h>
 
 int main() {

@@ -1,3 +1,4 @@
+//bit stuffing
 #include <string.h>
 #include <stdio.h>
 

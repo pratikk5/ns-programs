@@ -1,3 +1,4 @@
+//Implementation of sliding window protocol
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h> // For malloc and free

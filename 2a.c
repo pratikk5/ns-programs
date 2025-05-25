@@ -1,3 +1,4 @@
+//Hamming code 
 #include <stdio.h>
 #include <conio.h>
 

@@ -1,3 +1,4 @@
+//Implementation of stop and wait protocol
 #include <stdio.h>
 #include <conio.h>
 int main() {

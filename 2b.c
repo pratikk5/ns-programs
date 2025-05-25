@@ -1,3 +1,4 @@
+//crc code
 #include <stdio.h>
 #include <string.h>
 #include <conio.h> // Include for getch()
